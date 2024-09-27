@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="CAN\AbstractCanDevice.cs" />
     <Compile Include="CAN\ZlgCanDevice.cs" />
+    <Compile Include="External\PCAN\PCANBasic.cs" />
     <Compile Include="External\Zlg\ZlgUsbCan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,8 +57,16 @@
     <PostBuildEvent>
 
 if not exist $(TargetDir)\CANDevicesLibrarys\ControlCAN.dll (
-    xcopy /y $(ProjectDir)DLL\ControlCAN.dll $(TargetDir)CANDevicesLibrarys\
-)
+   xcopy /y $(ProjectDir)DLL\ControlCAN.dll $(TargetDir)CANDevicesLibrarys\
+) 
+
+
+
+
+if not exist $(TargetDir)\CANDevicesLibrarys\PCANBasic.dll (
+   xcopy /y $(ProjectDir)DLL\PCANBasic.dll $(TargetDir)CANDevicesLibrarys\
+) 
+
 </PostBuildEvent>
   </PropertyGroup>
 </Project>
